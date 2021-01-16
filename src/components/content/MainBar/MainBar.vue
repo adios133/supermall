@@ -56,22 +56,11 @@
     name:'',
     components: {
       TabBarItem,TabBar
-    },
-    data () {
-      return {
-
-      };
-    },
-    computed: {
-
-    },
-    methods: {
-
-    },
+    }
   }
 </script>
 
 <style scoped>
-/* @import url(); */
+
 
 </style>

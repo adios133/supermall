@@ -1,6 +1,7 @@
 <template>
   <div class=''>
-    <h2>首页</h2>
+    <h2>detail</h2>
+    <p>{{iid}}</p>
   </div>
 </template>
 
@@ -13,7 +14,7 @@
     },
     data () {
       return {
-
+        iid:''
       };
     },
     computed: {
@@ -22,10 +23,12 @@
     methods: {
 
     },
+    created() {
+      this.iid = this.$route.params.iid
+    }
   }
 </script>
 
 <style scoped>
-/* @import url(); */
 
 </style>

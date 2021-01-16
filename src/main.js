@@ -10,3 +10,6 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// 使用事件总线
+Vue.prototype.$bus = new Vue()

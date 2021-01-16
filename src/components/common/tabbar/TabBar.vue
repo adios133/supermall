@@ -29,7 +29,7 @@
 @import url('~assets/css/base.css');
   #tab-bar {
     display: flex;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;

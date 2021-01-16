@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <main-bar></main-bar>
   </div>
 </template>
 <script>
-import MainBar from 'components/content/MainBar/MainBar'
+import MainBar from 'components/content/mainbar/MainBar'
+
+
 export default {
   name:'',
   components:{
