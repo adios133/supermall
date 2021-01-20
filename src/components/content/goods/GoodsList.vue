@@ -6,6 +6,7 @@
 
 <script>
 import GoodsListItem from "./GoodsListItem";
+
 export default {
   name: "",
   components: {
@@ -16,16 +17,9 @@ export default {
       type: Array,
       default() {
         return [];
-      },
-    },
+      }
+    }
   },
-  data() {
-    return {
-      
-    };
-  },
-  
-  
 };
 </script>
 

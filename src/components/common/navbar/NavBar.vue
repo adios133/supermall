@@ -7,23 +7,11 @@
 </template>
 
 <script>
-  //import x from ''
   export default {
     name:'',
     components: {
 
-    },
-    data () {
-      return {
-
-      };
-    },
-    computed: {
-
-    },
-    methods: {
-
-    },
+    }
   }
 </script>
 

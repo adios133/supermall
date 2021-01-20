@@ -15,11 +15,11 @@
     <scroll
       class="scroll-box"
       ref="scroll"
-      @scrollPosition="showTop"
+      @scrollPosition="homeScroll"
       @atBottom="loadMore"
       :probeType="3"
       :pullUpLoad="true">
-      <swiper :banner="banner" class="swiper" @swiperLoad="swiperLoad" />
+      <swiper :banner="banner" @swiperLoad="swiperLoad" />
       <recommend :recommend="recommend" @recommendLoad="recommendLoad" />
       <feature @featureLoad="featureLoad" />
       <tab-controller
@@ -38,7 +38,6 @@ import NavBar from "components/common/navbar/NavBar";
 import TabController from "components/content/tabcontroller/TabController";
 import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
-import ToTop from "components/content/totop/ToTop";
 
 import Swiper from "views/home/childComponents/Swiper";
 import Recommend from "views/home/childComponents/Recommend";
@@ -47,7 +46,9 @@ import Feature from "views/home/childComponents/Feature";
 import { getHomeData, getGoodsList } from "network/home";
 
 // 引入防抖函数
-import { debounce } from "common/utils";
+// import { debounce } from "common/utils";
+// 引入混入mixin
+import {imgFunction,toTopFn} from "common/mixin"
 
 export default {
   name: "",
@@ -59,7 +60,6 @@ export default {
     TabController,
     GoodsList,
     Scroll,
-    ToTop,
   },
   data() {
     return {
@@ -71,12 +71,14 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
-      isShowTop: false,
+      // isShowTop: false,
       isFixed: false,
       offsetTop: 0,
-      imgLoadCount:0
+      imgLoadCount:0,
+      saveY:0,
     }
   },
+  mixins:[imgFunction,toTopFn],
   computed: {
     goodsType() {
       return this.goods[this.currentType].list;
@@ -122,15 +124,14 @@ export default {
       this.$refs.tabControl2.currentIndex =index
       this.$refs.tabControl1.currentIndex =index
     },
-    // 回到顶部功能
-    topClick() {
-      this.$refs.scroll.scrollTo(0, 0, 500);
-    },
+    // 回到顶部功能mixin
+    
     // 是否显示到顶图标
-    showTop(position) {
+    homeScroll(position) {
+      // 显示回到顶部功能mixin，这个是不能混入的，方法内部会直接覆盖
       // console.log(position);
       this.isShowTop = -position.y > 700;
-      // -position.y > 700 ? (this.isShowTop = true) : (this.isShowTop = false);
+
       // tabcontroller 吸顶,当轮播图加载完成触发事件
       // console.log(-position.y);
       this.isFixed = -position.y > this.offsetTop;
@@ -154,7 +155,7 @@ export default {
     imageLoad() {
       if (this.imgLoadCount == 3) {
         this.offsetTop = this.$refs.tabControl2.$el.offsetTop;
-        console.log(this.offsetTop);   //649 多44  605
+        // console.log(this.offsetTop);   //649 多44  605
       }
     },
   },
@@ -167,13 +168,22 @@ export default {
     this.getGoodsList("sell");
   },
   mounted() {
-    // 刷新dom
-    const refresh = debounce(this.$refs.scroll.refresh, 50);
-    this.$bus.$on("imgLoad", () => {
-      // this.$refs.scroll.refresh();
-      refresh();
-    });
+    // 刷新dom,抽离到mixin.js 混入
   },
+  activated() {
+    // 刷新dom
+    this.$refs.scroll.refresh()
+    
+    // 滚动到离开时记录的位置
+    this.$refs.scroll.scrollTo(0, this.saveY,0);
+  },
+  deactivated() {
+    // 桌面浏览器模拟是没问题的，但在手机上，离开页面滚动就不能记录位置了，   手动记录
+    this.saveY = this.$refs.scroll.scroll.y
+    // 取消事件监听
+    this.$bus.$off("imgLoad", this.refreshFn)
+  }
+  
 };
 </script>
 
@@ -185,7 +195,7 @@ export default {
 }
 .home-nav {
   position: relative;
-  z-index: 2;
+  z-index: 999;
   width: 100%;
   background-color: var(--color-tint);
 }
@@ -194,14 +204,13 @@ export default {
   color: #fff;
 }
 .scroll-box {
-  /* height: calc(100% - 93px);
   overflow: hidden;
-  overflow: hidden; */
   position: absolute;
   top: 44px;
   bottom: 49px;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 .tab-contrl {
   position: relative;

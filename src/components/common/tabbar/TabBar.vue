@@ -35,5 +35,6 @@
     bottom: 0;
     background-color: #f6f6f6;
     box-shadow: 0 -1px 1px 1px rgba(0, 0, 0, .08);
+    z-index: 999;
 }
 </style>

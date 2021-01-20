@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive exclude="Detail">
       <router-view></router-view>
     </keep-alive>
-    <main-bar></main-bar>
+    <main-bar v-if="this.$route.meta.showTab" />
   </div>
 </template>
 <script>
@@ -14,7 +14,7 @@ export default {
   name:'',
   components:{
     MainBar
-  }
+  },
 }
 </script>
 

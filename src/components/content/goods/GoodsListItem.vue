@@ -1,6 +1,6 @@
 <template>
   <div class='goods-item' @click="linkTo">
-      <img :src="itemData.show.img" alt="" @load="imgLoad">
+      <img :src="showImg" alt="" @load="imgLoad">
       <p>{{itemData.title}}</p>
       <span class="price">￥:{{itemData.price}}</span>
       <span class="collection">{{itemData.cfav}}</span>
@@ -10,7 +10,6 @@
 <script>
 
   export default {
-    
     props: {
       itemData:{
         type:Object,
@@ -28,8 +27,18 @@
       linkTo() {
         // console.log(this.itemData);
         this.$router.push('/detail/' + this.itemData.iid)
-      }
+      },
+      
     },
+    computed: {
+      showImg() {
+        return  this.itemData.image ||this.itemData.show.img
+      },
+      // 并没有对应数据
+      // productId() {
+      //   return this.itemData.item_id || this.itemData.iid
+      // }
+    }
 
   }
 </script>
@@ -37,9 +46,8 @@
 <style scoped>
   .goods-item {
     flex: 45%;
-    /* width: 45%; */
     overflow: hidden;
-    margin: 5px 7px;
+    margin: 10px 7px;
     padding-bottom: 5px;
     font-size: 12px;
     text-align: center;

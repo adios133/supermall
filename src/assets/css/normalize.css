@@ -9,6 +9,7 @@
  */
 
 html {
+  font-size: 4.26666666666667vw;
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }

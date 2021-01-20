@@ -39,11 +39,10 @@ export default {
       default: false,
     },
   },
-  computed: {},
   methods: {
     // 封装滚动到顶部，
-    scrollTo(x, y, time) {
-      this.scroll && this.scroll.scrollTo(x, y, (time = 500));
+    scrollTo(x, y, time=500) {
+      this.scroll && this.scroll.scrollTo(x, y, time);
     },
     // 封装刷新DOM
     refresh() {

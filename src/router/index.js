@@ -14,27 +14,42 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    redirect: '/home'
+    redirect: '/home',
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    meta:{
+      showTab:true
+    }
   },
   {
     path: '/category',
-    component: Category
+    component: Category,
+    meta:{
+      showTab:true
+    }
   },
   {
     path: '/shopcart',
-    component: Shopcart
+    component: Shopcart,
+    meta:{
+      showTab:true
+    }
   },
   {
     path: '/profile',
-    component: Profile
+    component: Profile,
+    meta:{
+      showTab:true
+    }
   },
   {
     path: '/detail/:iid',
-    component:Detail
+    component:Detail,
+    meta:{
+      showTab:false
+    }
   }
 ]
 
