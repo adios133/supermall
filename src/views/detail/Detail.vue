@@ -115,7 +115,6 @@ export default {
       addGoods.desc = this.detailInfo.desc;
       // 操作较复杂，先dispatch到actions
       this.$store.dispatch("addCart",addGoods).then(res=> {
-        console.log(res);
         this.$toasts.show(res)
         // console.log(this.$toas);
       })
