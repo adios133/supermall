@@ -1,31 +1,43 @@
 <template>
-  <div class=''>
-    <h2>我的页面</h2>
+  <div id='profile'>
+    <nav-bar class="profile-nav">
+      <template v-slot:center>
+        <i>我的</i>
+      </template>
+    </nav-bar>
+    <my-info />
+    <my-discount />
+    <profile-list />
+    <copy-right />
   </div>
 </template>
 
 <script>
-  //import x from ''
+  import NavBar from "components/common/navbar/NavBar"
+  import MyInfo from "./childComponents/MyInfo"
+  import myDiscount from "./childComponents/MyDiscount"
+  import ProfileList from "./childComponents/ProfileList"
+  import CopyRight from "./childComponents/CopyRight"
   export default {
     name:'',
     components: {
-
+      NavBar,
+      MyInfo,
+      myDiscount,
+      ProfileList,
+      CopyRight
     },
-    data () {
-      return {
-
-      };
-    },
-    computed: {
-
-    },
-    methods: {
-
-    },
+    
   }
 </script>
 
 <style scoped>
-/* @import url(); */
+.profile-nav {
+  color: #fff;
+  background-color: var(--color-tint);
+}
+.profile-nav i {
+  font-style: normal;
+}
 
 </style>
