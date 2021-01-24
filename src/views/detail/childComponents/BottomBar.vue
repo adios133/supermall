@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="right">
-      <div class="shopcart">加入购物车</div>
+      <div class="shopcart" @click="addTo">加入购物车</div>
       <div class="purchases">购买</div>
     </div>
   </div>
@@ -29,7 +29,11 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    addTo() {
+      this.$emit("addToCart")
+    }
+  },
 };
 </script>
 
@@ -90,6 +94,7 @@ export default {
   width: 50%;
 }
 .right .shopcart {
+  color: #555;
   background-color: #ffde11;
 }
 .right .purchases {

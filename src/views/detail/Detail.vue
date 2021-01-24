@@ -16,7 +16,7 @@
       <goods-list :goods="recommendList" ref="Dgoods" />
     </scroll>
     <to-top @click.native="topClick" v-show="isShowTop" />
-    <bottom-bar />
+    <bottom-bar @addToCart="addToCart" />
   </div>
 </template>
 
@@ -104,6 +104,23 @@ export default {
         }
       }
     },
+    addToCart() {
+      // 添加到购物车
+      // 按理应该讲用户信息一并传递，本案案例没有做
+      const addGoods = {};
+      addGoods.image = this.swiperImg[0];
+      addGoods.title = this.itemInfo.title;
+      addGoods.iid = this.iid;
+      addGoods.price = this.itemInfo.lowPrice;
+      addGoods.desc = this.detailInfo.desc;
+      // 操作较复杂，先dispatch到actions
+      this.$store.dispatch("addCart",addGoods).then(res=> {
+        console.log(res);
+        this.$toasts.show(res)
+        // console.log(this.$toas);
+      })
+    }
+    
   },
   created() {
     // 1.获取传过来的商品id

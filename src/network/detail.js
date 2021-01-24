@@ -14,6 +14,7 @@ export class itemInfo {
     this.title = itemInfo.title;
     this.newPrice = itemInfo.price;
     this.oldPrice = itemInfo.oldPrice;
+    this.lowPrice = itemInfo.lowNowPrice;
     this.discountDesc = itemInfo.discountDesc;
     this.discountBgColor = itemInfo.discountBgColor;
     this.columns = columns;

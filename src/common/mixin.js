@@ -8,7 +8,6 @@ export const imgFunction = {
   mounted() {
     const refresh = debounce(this.$refs.scroll.refresh, 50);
     this.refreshFn = () => {
-      // this.$refs.scroll.refresh();
       refresh();
     }
     this.$bus.$on("imgLoad", this.refreshFn)

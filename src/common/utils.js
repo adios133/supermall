@@ -4,6 +4,7 @@ export function debounce(fun, delay) {
   return function (...args) {
     if (timer) clearTimeout(timer)
     timer = setTimeout(() => {
+      // 这个thisundefined
       fun.apply(this, args)
     }, delay)
   }
