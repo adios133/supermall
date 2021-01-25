@@ -39,6 +39,7 @@
         sildeList:[],
         categoryDetail:[],
         reFn:null,
+        saveY:0
       };
     },
     methods: {
@@ -86,9 +87,14 @@
       this.refreshDOM()
     },
     activated() {
-      this.refreshDOM()
+      // 这个不会触发imgLoad，所以不能使用this.refreshDOM()
+      this.$refs.scroll.refresh()
+      this.$refs.scroll.scrollTo(0,this.saveY,0)
     },
     deactivated() {
+      // 保存滚动位置
+      this.saveY = this.$refs.scroll.scroll.y
+
       this.$bus.$off('imgLoad',this.reFn)
     } 
   }
