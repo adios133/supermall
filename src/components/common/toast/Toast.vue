@@ -34,8 +34,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  padding:.3rem .3rem;
+  padding:.4rem;
   color: #fff;
+  font-size: .9rem;
   border-radius: 5px;
   background-color: rgba(0,0,0,.75);
   z-index: 999;
