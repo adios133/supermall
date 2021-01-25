@@ -85,6 +85,9 @@
       // 每次点击左边，更新再次刷新
       this.refreshDOM()
     },
+    activated() {
+      this.refreshDOM()
+    },
     deactivated() {
       this.$bus.$off('imgLoad',this.reFn)
     } 
