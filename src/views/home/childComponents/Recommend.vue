@@ -40,7 +40,7 @@
 </script>
 
 <style scoped>
-/* @import url(); */
+
 .recommend {
   display: flex;
   background-color: #fff;
@@ -48,12 +48,12 @@
 }
 .recommend-item {
   flex: 1;
-  font-size: 13px;
+  font-size: .8125rem;
   text-align: center;
 }
 .recommend img {
-  width: 70px;
-  margin: 10px 0;
+  width: 4.375rem;
+  margin: .625rem 0;
 }
 .recommend-item-title {
   padding-bottom: 8px;

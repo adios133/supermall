@@ -2,7 +2,7 @@
   <div class='goods-item' @click="linkTo">
       <img v-lazy="showImg" alt="" @load="imgLoad">
       <p>{{itemData.title}}</p>
-      <span class="price">￥:{{itemData.price}}</span>
+      <span class="price">￥{{itemData.price}}</span>
       <span class="collection">{{itemData.cfav}}</span>
   </div>
 </template>
@@ -47,9 +47,9 @@
   .goods-item {
     flex: 45%;
     overflow: hidden;
-    margin: 10px 7px;
-    padding-bottom: 5px;
-    font-size: 12px;
+    margin: .625rem .4375rem;
+    padding-bottom: .3125rem;
+    font-size: .75rem;
     text-align: center;
     /* border: 1px solid #eee; */
     border-radius: 6%;
@@ -66,7 +66,7 @@
     text-overflow: ellipsis;
   }
   .goods-item span {
-    margin:10px;
+    margin:.625rem;
   }
   .goods-item .price {
     color: var(--color-high-text);

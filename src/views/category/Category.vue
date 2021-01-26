@@ -110,7 +110,6 @@
       // 是否显示到顶图标
       homeScroll(position) {
         // 显示回到顶部功能mixin，这个是不能混入的，方法内部会直接覆盖
-        console.log(position);
         this.isShowTop = -position.y > TOP_DISTANCE;
 
         // tabcontroller 吸顶,当轮播图加载完成触发事件

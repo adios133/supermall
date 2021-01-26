@@ -201,7 +201,7 @@ export default {
   background-color: var(--color-tint);
 }
 .center {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #fff;
 }
 .scroll-box {

@@ -30,7 +30,7 @@
 <style scoped>
 /* @import url(); */
   .feature {
-    margin-top: 10px;
+    margin-top: .625rem;
   }
   .feature img {
     width: 100%;
