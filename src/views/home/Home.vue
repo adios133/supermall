@@ -49,6 +49,7 @@ import { getHomeData, getGoodsList } from "network/home";
 // import { debounce } from "common/utils";
 // 引入混入mixin
 import {imgFunction,toTopFn} from "common/mixin"
+import {TOP_DISTANCE,POP,NEW,SELL} from "common/const"
 
 export default {
   name: "",
@@ -70,7 +71,7 @@ export default {
         new: { page: 0, list: [] },
         sell: { page: 0, list: [] },
       },
-      currentType: "pop",
+      currentType: POP,
       // isShowTop: false,
       isFixed: false,
       offsetTop: 0,
@@ -112,13 +113,13 @@ export default {
       // console.log(index);
       switch (index) {
         case 0:
-          this.currentType = "pop";
+          this.currentType = POP;
           break;
         case 1:
-          this.currentType = "new";
+          this.currentType = NEW;
           break;
         case 2:
-          this.currentType = "sell";
+          this.currentType = SELL;
           break;
       }
       this.$refs.tabControl2.currentIndex =index
@@ -130,7 +131,7 @@ export default {
     homeScroll(position) {
       // 显示回到顶部功能mixin，这个是不能混入的，方法内部会直接覆盖
       // console.log(position);
-      this.isShowTop = -position.y > 700;
+      this.isShowTop = -position.y > TOP_DISTANCE;
 
       // tabcontroller 吸顶,当轮播图加载完成触发事件
       // console.log(-position.y);
@@ -163,9 +164,9 @@ export default {
     // 获取home banner,recommend数据
     this.getHomeData();
     // 获取home商品数据
-    this.getGoodsList("pop");
-    this.getGoodsList("new");
-    this.getGoodsList("sell");
+    this.getGoodsList(POP);
+    this.getGoodsList(NEW);
+    this.getGoodsList(SELL);
   },
   mounted() {
     // 刷新dom,抽离到mixin.js 混入

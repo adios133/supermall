@@ -32,7 +32,7 @@
     },
     computed: {
       showImg() {
-        return  this.itemData.image ||this.itemData.show.img || this.itemData.img
+        return  this.itemData.image || this.itemData.img ||this.itemData.show.img 
       },
       // 并没有对应数据
       // productId() {

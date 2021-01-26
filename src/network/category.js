@@ -15,3 +15,13 @@ export function getCategoryDetail(maitKey) {
     }
   })
 }
+// 下面的商品数据
+export function getCategoryGoods(miniWallkey, type) {
+  return request({
+    url: '/subcategory/detail',
+    params: {
+      miniWallkey,
+      type
+    }
+  })
+}

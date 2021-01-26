@@ -12,7 +12,6 @@ export const imgFunction = {
     }
     this.$bus.$on("imgLoad", this.refreshFn)
   },
-  
 }
 // 混入回到顶部
 import ToTop from "components/content/totop/ToTop";

@@ -37,6 +37,8 @@ import { imgFunction, toTopFn } from "common/mixin";
 
 // 引入网络请求封装
 import { getDetailData, itemInfo, Shop, GoodsParams, getRecommend } from "network/detail";
+import {TOP_DISTANCE} from "common/const"
+
 
 export default {
   name: "Detail",
@@ -87,7 +89,7 @@ export default {
     },
     pageScroller(position) {
       // 显示回到顶部功能mixin，这个是不能混入的，methods内部的方法合并，方法内部会直接覆盖
-      this.isShowTop = -position.y > 700;
+      this.isShowTop = -position.y > TOP_DISTANCE;
 
       // 做当滚动到指定位置，nav对应变化
       /* 
