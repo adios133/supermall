@@ -38,12 +38,12 @@
 
   import {getSlideCategory,getCategoryDetail,getCategoryGoods} from "network/category"
 
-  import {toTopFn} from "common/mixin"
-  import {TOP_DISTANCE,POP,NEW,SELL} from "common/const"
+  import {imgFunction,toTopFn, SwitchGoods,FixedTop,GoodsCartData,activeOrNot} from "common/mixin"
+  import {POP,NEW,SELL} from "common/const"
 
   export default {
     name:'',
-    mixins:[toTopFn],
+    mixins:[imgFunction,toTopFn, SwitchGoods,FixedTop,GoodsCartData,activeOrNot],
     components: {
       NavBar,
       SlideMenu,
@@ -58,12 +58,12 @@
         sildeList:[],
         // 每个分类对应具体数据
         categoryDetail:[],
-        // 刷新函数，
-        reFn:null,
-        // 离开页面，记录位置
-        saveY:0,
-        // 记录type信息，pop ，sell ，new
-        currentType:POP,
+        // 刷新函数，mixin
+        //  refreshFn:null,
+        // 离开页面，记录位置,mixin
+        // saveY:0,
+        // 记录type信息，pop ，sell ，new mixin
+        // currentType:POP,
         // 同步左边选中是哪个分类的index
         currentIndex:0,
         goods: {
@@ -71,15 +71,17 @@
           new: { list: [] },
           sell: { list: [] },
         },
-        isFixed: false,
-        offsetTop: 0,
+        // mixin
+        // isFixed: false,
+        // offsetTop: 0,
       };
     },
-    computed: {
-      goodsTypeList() {
-        return this.goods[this.currentType].list
-      }
-    },
+    // 计算传给goodslist数据 mixin
+    // computed: {
+    //   goodsTypeList() {
+    //     return this.goods[this.currentType].list
+    //   }
+    // },
     methods: {
       // 封装侧边分类请求
       _getSlideCategory() {
@@ -88,7 +90,7 @@
           this.sildeList = data.list
           // 第一次请求分类具体数据
           this._getCategoryDetail(this.sildeList[0].maitKey)
-
+          // goodslist
           this._getCategoryGoods(POP)
           this._getCategoryGoods(NEW)
           this._getCategoryGoods(SELL)
@@ -107,15 +109,8 @@
         this.goods[type].list = res;
         })
       },
-      // 是否显示到顶图标
-      homeScroll(position) {
-        // 显示回到顶部功能mixin，这个是不能混入的，方法内部会直接覆盖
-        this.isShowTop = -position.y > TOP_DISTANCE;
-
-        // tabcontroller 吸顶,当轮播图加载完成触发事件
-        // console.log(-position.y);
-        this.isFixed = -position.y > this.offsetTop;
-      },
+      // 是否显示到顶图标 mixin
+     
 
       // 封装刷新DOM方法
       refreshDOM() {
@@ -128,22 +123,8 @@
       /* 点击tabcontroller 切换流行，新品，热卖 三个种类 
         ['流行'，'新品'，'热卖'] 对应 type ['pop','new','sell'] 对应index 0，1，2
       */
-      goodsSwitch(index) {
-        // console.log(index);
-        switch(index) {
-          case 0:
-            this.currentType = POP
-            break;
-          case 1:
-            this.currentType = NEW
-            break;
-          case 2:
-            this.currentType = SELL
-            break;   
-        }
-        this.$refs.tabControl2.currentIndex =index
-        this.$refs.tabControl1.currentIndex =index
-      },
+      //  mixin
+      
 
       
       // 子组件自定义事件发出，点击分类请求每个分类
@@ -154,9 +135,9 @@
         // 请求每个分类数据
         this._getCategoryDetail(maitKey)
         // 当切换左边重新请求，下面的数据
-        this._getCategoryGoods('pop')
-        this._getCategoryGoods('new')
-        this._getCategoryGoods('sell')
+        this._getCategoryGoods(POP)
+        this._getCategoryGoods(NEW)
+        this._getCategoryGoods(SELL)
         // 每点击一次滚动到最开始
         this.$refs.scroll.scrollTo(0,0,0)
       },
@@ -177,17 +158,18 @@
       this.offsetTop = this.$refs.tabControl2.$el.offsetTop;
 
     },
-    activated() {
-      // 这个不会触发imgLoad，所以不能使用this.refreshDOM()
-      this.$refs.scroll.refresh()
-      this.$refs.scroll.scrollTo(0,this.saveY,0)
-    },
-    deactivated() {
-      // 保存滚动位置
-      this.saveY = this.$refs.scroll.scroll.y
+    // mixin
+    // activated() {
+    //   // 这个不会触发imgLoad，所以不能使用this.refreshDOM()
+    //   this.$refs.scroll.refresh()
+    //   this.$refs.scroll.scrollTo(0,this.saveY,0)
+    // },
+    // deactivated() {
+    //   // 保存滚动位置
+    //   this.saveY = this.$refs.scroll.scroll.y
 
-      this.$bus.$off('imgLoad',this.reFn)
-    } 
+    //   this.$bus.$off('imgLoad',this.refreshFn)
+    // } 
   }
 </script>
 

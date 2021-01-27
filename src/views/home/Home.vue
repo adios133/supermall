@@ -27,7 +27,7 @@
         @goodsSwitch="goodsSwitch"
         ref="tabControl2"
       />
-      <goods-list :goods="goodsType" />
+      <goods-list :goods="goodsTypeList" />
     </scroll>
     <to-top @click.native="topClick" v-show="isShowTop" />
   </div>
@@ -48,8 +48,8 @@ import { getHomeData, getGoodsList } from "network/home";
 // 引入防抖函数
 // import { debounce } from "common/utils";
 // 引入混入mixin
-import {imgFunction,toTopFn} from "common/mixin"
-import {TOP_DISTANCE,POP,NEW,SELL} from "common/const"
+import {imgFunction,toTopFn, SwitchGoods,FixedTop, GoodsCartData,activeOrNot} from "common/mixin"
+import {POP,NEW,SELL} from "common/const"
 
 export default {
   name: "",
@@ -71,20 +71,18 @@ export default {
         new: { page: 0, list: [] },
         sell: { page: 0, list: [] },
       },
-      currentType: POP,
       // isShowTop: false,
-      isFixed: false,
-      offsetTop: 0,
+      // mixin
       imgLoadCount:0,
-      saveY:0,
+      // saveY:0,
+      // mixin
     }
   },
-  mixins:[imgFunction,toTopFn],
-  computed: {
-    goodsType() {
-      return this.goods[this.currentType].list;
-    },
-  },
+  mixins:[imgFunction,toTopFn, SwitchGoods,FixedTop, GoodsCartData,activeOrNot],
+  // 计算传给goodslist数据 mixin
+  //  computed: {
+  
+  //  },
   methods: {
     // 网络请求相关
     // 请求banner recommend数据
@@ -109,34 +107,13 @@ export default {
     },
     // 事件相关
     // 点击切换类型
-    goodsSwitch(index) {
-      // console.log(index);
-      switch (index) {
-        case 0:
-          this.currentType = POP;
-          break;
-        case 1:
-          this.currentType = NEW;
-          break;
-        case 2:
-          this.currentType = SELL;
-          break;
-      }
-      this.$refs.tabControl2.currentIndex =index
-      this.$refs.tabControl1.currentIndex =index
-    },
+    // mixin
+
+
     // 回到顶部功能mixin
     
-    // 是否显示到顶图标
-    homeScroll(position) {
-      // 显示回到顶部功能mixin，这个是不能混入的，方法内部会直接覆盖
-      // console.log(position);
-      this.isShowTop = -position.y > TOP_DISTANCE;
-
-      // tabcontroller 吸顶,当轮播图加载完成触发事件
-      // console.log(-position.y);
-      this.isFixed = -position.y > this.offsetTop;
-    },
+    // 是否显示到顶图标 mixin
+   
     // 加载更多，传入当前的请求类型
     loadMore() {
       this.getGoodsList(this.currentType);
@@ -171,19 +148,20 @@ export default {
   mounted() {
     // 刷新dom,抽离到mixin.js 混入
   },
-  activated() {
-    // 刷新dom
-    this.$refs.scroll.refresh()
+  // mixin
+  // activated() {
+  //   // 刷新dom
+  //   this.$refs.scroll.refresh()
     
-    // 滚动到离开时记录的位置
-    this.$refs.scroll.scrollTo(0, this.saveY,0);
-  },
-  deactivated() {
-    // 桌面浏览器模拟是没问题的，但在手机上，离开页面滚动就不能记录位置了，   手动记录
-    this.saveY = this.$refs.scroll.scroll.y
-    // 取消事件监听
-    this.$bus.$off("imgLoad", this.refreshFn)
-  }
+  //   // 滚动到离开时记录的位置
+  //   this.$refs.scroll.scrollTo(0, this.saveY,0);
+  // },
+  // deactivated() {
+  //   // 桌面浏览器模拟是没问题的，但在手机上，离开页面滚动就不能记录位置了，   手动记录
+  //   this.saveY = this.$refs.scroll.scroll.y
+  //   // 取消事件监听
+  //   this.$bus.$off("imgLoad", this.refreshFn)
+  // }
   
 };
 </script>
