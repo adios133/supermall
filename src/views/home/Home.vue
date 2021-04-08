@@ -148,20 +148,6 @@ export default {
   mounted() {
     // 刷新dom,抽离到mixin.js 混入
   },
-  // mixin
-  // activated() {
-  //   // 刷新dom
-  //   this.$refs.scroll.refresh()
-    
-  //   // 滚动到离开时记录的位置
-  //   this.$refs.scroll.scrollTo(0, this.saveY,0);
-  // },
-  // deactivated() {
-  //   // 桌面浏览器模拟是没问题的，但在手机上，离开页面滚动就不能记录位置了，   手动记录
-  //   this.saveY = this.$refs.scroll.scroll.y
-  //   // 取消事件监听
-  //   this.$bus.$off("imgLoad", this.refreshFn)
-  // }
   
 };
 </script>

@@ -2,46 +2,46 @@
   <div class=''>
     <tab-bar>
       <tab-bar-item path="/home">
-        <template v-slot:item-img-normal>
+        <template #item-img-normal>
           <img src="~assets/img/tabbar/home.svg" alt="">
         </template>
-        <template v-slot:item-img-active>
+        <template #item-img-active>
            <img src="~assets/img/tabbar/home_active.svg" alt="">
         </template>
-        <template v-slot:item-title>
+        <template #item-title>
           <div>主页</div>
         </template>
       </tab-bar-item>
       <tab-bar-item path="/category">
-        <template v-slot:item-img-normal>
+        <template #item-img-normal>
           <img src="~assets/img/tabbar/category.svg" alt="">
         </template>
-        <template v-slot:item-img-active>
+        <template #item-img-active>
            <img src="~assets/img/tabbar/category_active.svg" alt="">
         </template>
-        <template v-slot:item-title>
+        <template #item-title>
           <div>分类</div>
         </template>
       </tab-bar-item>
       <tab-bar-item path="/shopcart">
-        <template v-slot:item-img-normal>
+        <template #item-img-normal>
           <img src="~assets/img/tabbar/shopcart.svg" alt="">
         </template>
-        <template v-slot:item-img-active>
+        <template #item-img-active>
            <img src="~assets/img/tabbar/shopcart_active.svg" alt="">
         </template>
-        <template v-slot:item-title>
+        <template #item-title>
           <div>购物车</div>
         </template>
       </tab-bar-item>
       <tab-bar-item path="/profile">
-        <template v-slot:item-img-normal>
+        <template #item-img-normal>
           <img src="~assets/img/tabbar/profile.svg" alt="">
         </template>
         <template v-slot:item-img-active>
            <img src="~assets/img/tabbar/profile_active.svg" alt="">
         </template>
-        <template v-slot:item-title>
+        <template #item-title>
           <div>我的</div>
         </template>
       </tab-bar-item>
