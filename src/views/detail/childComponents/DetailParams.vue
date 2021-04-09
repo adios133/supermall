@@ -1,20 +1,32 @@
 <template>
   <div class="detail-params">
     <!-- 参数表 -->
-    <div class="params" >
-      <table class="params-table" v-for="(table, index) in goodsParams.sizes" :key="index">
-        <caption class="p-title">{{goodsParams.rkey}}</caption>
+    <div class="params">
+      <table
+        class="params-table"
+        v-for="(table, index) in goodsParams.sizes"
+        :key="index"
+      >
+        <caption class="p-title">
+          {{
+            goodsParams.rkey
+          }}
+        </caption>
         <tr v-for="(tr, indey) in table" :key="indey">
-          <td v-for="(td, indez) in tr" :key="indez">{{td}}</td>
+          <td v-for="(td, indez) in tr" :key="indez">{{ td }}</td>
         </tr>
       </table>
-      <p class="disclaimer">{{goodsParams.disclaimer}}</p>
+      <p class="disclaimer">{{ goodsParams.disclaimer }}</p>
     </div>
-    <table class="set-table" >
-    <caption class="s-title">{{goodsParams.ikey}}</caption>
+    <table class="set-table">
+      <caption class="s-title">
+        {{
+          goodsParams.ikey
+        }}
+      </caption>
       <tr v-for="(item, index) in goodsParams.infos" :key="index">
-        <td class="s-key">{{item.key}}</td>
-        <td class="s-value">{{item.value}}</td>
+        <td class="s-key">{{ item.key }}</td>
+        <td class="s-value">{{ item.value }}</td>
       </tr>
     </table>
   </div>
@@ -40,12 +52,13 @@ export default {
   border-bottom: 2px solid #ccc;
 }
 .disclaimer {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   font-size: 0.8rem;
   line-height: 1.5;
   border-bottom: 2px solid #ccc;
 }
-.p-title,.s-title {
+.p-title,
+.s-title {
   line-height: 2rem;
 }
 .params-table {
@@ -55,7 +68,7 @@ export default {
 }
 .params-table tr {
   line-height: 2;
-  font-size: .9rem;
+  font-size: 0.9rem;
   text-align: center;
   border-bottom: 1px solid #ccc;
 }
@@ -67,7 +80,7 @@ export default {
 }
 .set-table tr {
   line-height: 2.5;
-  font-size: .9rem;
+  font-size: 0.9rem;
   border-bottom: 1px solid #ccc;
 }
 .set-table .s-key {

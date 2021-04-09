@@ -1,43 +1,42 @@
 <template>
-  <div class='item-info'>
-    <p>{{itemInfo.title}}</p>
-    <span class="price">{{itemInfo.newPrice}}</span>
-    <span class="old-price"> {{itemInfo.oldPrice}} </span>
-    <span class="discount" 
-    :style="{backgroundColor:itemInfo.discountBgColor}"
-    v-if="itemInfo.discountDesc != ''">{{itemInfo.discountDesc}}</span>
+  <div class="item-info">
+    <p>{{ itemInfo.title }}</p>
+    <span class="price">{{ itemInfo.newPrice }}</span>
+    <span class="old-price"> {{ itemInfo.oldPrice }} </span>
+    <span
+      class="discount"
+      :style="{ backgroundColor: itemInfo.discountBgColor }"
+      v-if="itemInfo.discountDesc != ''"
+      >{{ itemInfo.discountDesc }}</span
+    >
     <div class="columns">
-      <span v-for="item in itemInfo.columns" :key="item">{{item}}</span>
+      <span v-for="item in itemInfo.columns" :key="item">{{ item }}</span>
     </div>
   </div>
 </template>
 
 <script>
-  //import x from ''
-  export default {
-    name:'',
-    props: {
-      itemInfo:{
-        type:Object,
-        default() {
-          return {}
-        }
-      }
+export default {
+  name: "",
+  props: {
+    itemInfo: {
+      type: Object,
+      default() {
+        return {};
+      },
     },
-    data () {
-      return {
-
-      };
-    },
-    
-  }
+  },
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>
 .item-info {
   margin-top: 8px;
   font-size: 1.1rem;
-  box-shadow: 0 1px 1px 1px rgba(0,0,0,.1);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 .item-info p {
   padding: 8px;
@@ -51,18 +50,18 @@
   font-size: 1.7rem;
 }
 .item-info .old-price {
-  margin-left: .5rem;
-  line-height: .8rem;
+  margin-left: 0.5rem;
+  line-height: 0.8rem;
   color: #999;
   font-size: 1.1rem;
   text-decoration: line-through;
 }
 .item-info .discount {
   position: relative;
-  top: -.4rem;
+  top: -0.4rem;
   padding: 4px;
   margin-left: 12px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: #fff;
   border-radius: 6px;
 }
@@ -70,10 +69,7 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 6px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #999;
-  
-} 
-
-
+}
 </style>

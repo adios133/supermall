@@ -24,15 +24,13 @@
 <script>
 export default {
   name: "",
-  components: {},
   data() {
     return {};
   },
-  computed: {},
   methods: {
     addTo() {
-      this.$emit("addToCart")
-    }
+      this.$emit("addToCart");
+    },
   },
 };
 </script>
@@ -57,9 +55,9 @@ export default {
 }
 /* 左边部分 */
 .left {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
-.left>div {
+.left > div {
   flex: 1;
   text-align: center;
 }
@@ -67,13 +65,13 @@ export default {
   display: block;
   width: 1.35rem;
   height: 1.35rem;
-  margin: .35rem auto 0;
-  background: url('~assets/img/detail/detail_bottom.png') 0 0/100% ;
+  margin: 0.35rem auto 0;
+  background: url("~assets/img/detail/detail_bottom.png") 0 0/100%;
 }
 /* 字体和图标为什么间距这么大 */
 .left .text {
   position: relative;
-  top: -.8rem;
+  top: -0.8rem;
 }
 .left .service {
   background-position: 0 -3.19rem;
@@ -82,14 +80,14 @@ export default {
   background-position: 0 -5.88rem;
 }
 
-
 /* 右边部分 */
 .right {
   text-align: center;
   color: #fff;
   justify-content: space-between;
 }
-.shopcart, .purchases {
+.shopcart,
+.purchases {
   flex: 1;
   width: 50%;
 }

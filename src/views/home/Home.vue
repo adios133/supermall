@@ -18,7 +18,8 @@
       @scrollPosition="homeScroll"
       @atBottom="loadMore"
       :probeType="3"
-      :pullUpLoad="true">
+      :pullUpLoad="true"
+    >
       <swiper :banner="banner" @swiperLoad="swiperLoad" />
       <recommend :recommend="recommend" @recommendLoad="recommendLoad" />
       <feature @featureLoad="featureLoad" />
@@ -48,8 +49,15 @@ import { getHomeData, getGoodsList } from "network/home";
 // 引入防抖函数
 // import { debounce } from "common/utils";
 // 引入混入mixin
-import {imgFunction,toTopFn, SwitchGoods,FixedTop, GoodsCartData,activeOrNot} from "common/mixin"
-import {POP,NEW,SELL} from "common/const"
+import {
+  imgFunction,
+  toTopFn,
+  SwitchGoods,
+  FixedTop,
+  GoodsCartData,
+  activeOrNot,
+} from "common/mixin";
+import { POP, NEW, SELL } from "common/const";
 
 export default {
   name: "",
@@ -71,18 +79,10 @@ export default {
         new: { page: 0, list: [] },
         sell: { page: 0, list: [] },
       },
-      // isShowTop: false,
-      // mixin
-      imgLoadCount:0,
-      // saveY:0,
-      // mixin
-    }
+      imgLoadCount: 0,
+    };
   },
-  mixins:[imgFunction,toTopFn, SwitchGoods,FixedTop, GoodsCartData,activeOrNot],
-  // 计算传给goodslist数据 mixin
-  //  computed: {
-  
-  //  },
+  mixins: [imgFunction, toTopFn, SwitchGoods, FixedTop, GoodsCartData, activeOrNot],
   methods: {
     // 网络请求相关
     // 请求banner recommend数据
@@ -109,31 +109,29 @@ export default {
     // 点击切换类型
     // mixin
 
-
     // 回到顶部功能mixin
-    
+
     // 是否显示到顶图标 mixin
-   
+
     // 加载更多，传入当前的请求类型
     loadMore() {
       this.getGoodsList(this.currentType);
     },
     recommendLoad() {
-      this.imgLoadCount += 1
+      this.imgLoadCount += 1;
       return this.imageLoad();
     },
     swiperLoad() {
-      this.imgLoadCount += 1
+      this.imgLoadCount += 1;
       return this.imageLoad();
     },
     featureLoad() {
-      this.imgLoadCount += 1
+      this.imgLoadCount += 1;
       return this.imageLoad();
     },
     imageLoad() {
       if (this.imgLoadCount == 3) {
         this.offsetTop = this.$refs.tabControl2.$el.offsetTop;
-        // console.log(this.offsetTop);   //649 多44  605
       }
     },
   },
@@ -148,7 +146,6 @@ export default {
   mounted() {
     // 刷新dom,抽离到mixin.js 混入
   },
-  
 };
 </script>
 

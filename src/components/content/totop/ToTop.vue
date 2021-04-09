@@ -1,13 +1,13 @@
 <template>
-  <div class='totop'>
-    <img src="~assets/img/common/top.png" alt="">
+  <div class="totop">
+    <img src="~assets/img/common/top.png" alt="" />
   </div>
 </template>
 
 <script>
-  export default {
-    name:'ToTop'
-  }
+export default {
+  name: "ToTop",
+};
 </script>
 
 <style scoped>
@@ -21,5 +21,4 @@
   width: 8.5vh;
   height: 8.5vh;
 }
-
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="goods-list">
-      <goods-list-item :itemData="item" v-for="(item, index) in goods" :key="index" />
+    <goods-list-item :itemData="item" v-for="(item, index) in goods" :key="index" />
   </div>
 </template>
 
@@ -17,8 +17,8 @@ export default {
       type: Array,
       default() {
         return [];
-      }
-    }
+      },
+    },
   },
 };
 </script>
@@ -32,5 +32,4 @@ export default {
   margin-top: 5px;
   padding: 0 3px;
 }
-
 </style>

@@ -5,7 +5,8 @@
       class="detail-scroll"
       ref="scroll"
       @scrollPosition="pageScroller"
-      :probeType="3">
+      :probeType="3"
+    >
       <swiper :swiperImg="swiperImg" @swiperLoad="imgLoad" />
       <item-info :itemInfo="itemInfo" />
       <services :services="itemInfo" />
@@ -37,8 +38,7 @@ import { imgFunction, toTopFn } from "common/mixin";
 
 // 引入网络请求封装
 import { getDetailData, itemInfo, Shop, GoodsParams, getRecommend } from "network/detail";
-import {TOP_DISTANCE} from "common/const"
-
+import { TOP_DISTANCE } from "common/const";
 
 export default {
   name: "Detail",
@@ -67,7 +67,7 @@ export default {
       recommendList: [],
       pageOffset: [],
       counter: 0,
-      currentIndex:0
+      currentIndex: 0,
     };
   },
   mixins: [imgFunction, toTopFn],
@@ -99,10 +99,14 @@ export default {
         3000-4000  comment
         4000- max  recommend
       */
-      for (let i = 0; i < this.pageOffset.length - 1;i++) {
-        if((this.currentIndex !== i) && (-position.y >= this.pageOffset[i] && -position.y < this.pageOffset[i+1])) {
-          this.currentIndex = i
-          this.$refs.detailNav.currentIndex = this.currentIndex 
+      for (let i = 0; i < this.pageOffset.length - 1; i++) {
+        if (
+          this.currentIndex !== i &&
+          -position.y >= this.pageOffset[i] &&
+          -position.y < this.pageOffset[i + 1]
+        ) {
+          this.currentIndex = i;
+          this.$refs.detailNav.currentIndex = this.currentIndex;
         }
       }
     },
@@ -116,12 +120,11 @@ export default {
       addGoods.price = this.itemInfo.lowPrice;
       addGoods.desc = this.detailInfo.desc;
       // 操作较复杂，先dispatch到actions
-      this.$store.dispatch("addCart",addGoods).then(res=> {
-        this.$toasts.show(res)
+      this.$store.dispatch("addCart", addGoods).then((res) => {
+        this.$toasts.show(res);
         // console.log(this.$toas);
-      })
-    }
-    
+      });
+    },
   },
   created() {
     // 1.获取传过来的商品id

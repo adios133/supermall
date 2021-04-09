@@ -1,7 +1,7 @@
 <template>
   <van-swipe class="my-swipe" :autoplay="3000" indicator-color="#ff8198">
     <van-swipe-item v-for="(item, index) in swiperImg" :key="index">
-      <img :src="item" alt="" @load="swiperLoad"/>
+      <img :src="item" alt="" @load="swiperLoad" />
     </van-swipe-item>
   </van-swipe>
 </template>
@@ -27,17 +27,17 @@ export default {
   },
   data() {
     return {
-      isLoad:false
+      isLoad: false,
     };
   },
   computed: {},
   methods: {
-    swiperLoad() { 
-      if(!this.isLoad) {
-        this.$emit("swiperLoad")
-        this.isLoad = true
+    swiperLoad() {
+      if (!this.isLoad) {
+        this.$emit("swiperLoad");
+        this.isLoad = true;
       }
-    }
+    },
   },
 };
 </script>
@@ -46,9 +46,8 @@ export default {
 .my-swipe {
   height: 67vw;
 }
-.my-swipe img{
+.my-swipe img {
   width: 100%;
-  transform: translate(0,-100px);
+  transform: translate(0, -100px);
 }
-
 </style>

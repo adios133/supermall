@@ -16,9 +16,6 @@
         goodsList:this.$store.state.cartList
       }
     },
-    computed: {
-
-    }
   }
 </script>
 

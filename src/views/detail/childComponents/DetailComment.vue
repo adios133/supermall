@@ -26,7 +26,6 @@
 <script>
 import { formatDate } from "common/utils";
 export default {
-  name: "",
   props: {
     commentInfo: {
       type: Object,

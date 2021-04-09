@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     // 封装滚动到顶部，
-    scrollTo(x, y, time=500) {
+    scrollTo(x, y, time = 500) {
       this.scroll && this.scroll.scrollTo(x, y, time);
     },
     // 封装刷新DOM
@@ -50,8 +50,8 @@ export default {
     },
     // 封装结束下拉加载更多，可进行下次上拉
     finishPullUp() {
-      this.scroll && this.scroll.finishPullUp()
-    }
+      this.scroll && this.scroll.finishPullUp();
+    },
   },
   mounted() {
     // 创建bs实例
@@ -70,10 +70,10 @@ export default {
       });
     }
     // 监听到底加载更多
-    if(this.pullUpLoad) {
-      this.scroll.on('pullingUp',()=> {
-        this.$emit('atBottom')
-      })
+    if (this.pullUpLoad) {
+      this.scroll.on("pullingUp", () => {
+        this.$emit("atBottom");
+      });
     }
   },
 };

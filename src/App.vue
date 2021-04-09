@@ -7,17 +7,16 @@
   </div>
 </template>
 <script>
-import MainBar from 'components/content/mainbar/MainBar'
-
+import MainBar from "components/content/mainbar/MainBar";
 
 export default {
-  name:'',
-  components:{
-    MainBar
+  name: "",
+  components: {
+    MainBar,
   },
-}
+};
 </script>
 
 <style>
-  @import url('assets/css/base.css');
+@import url("assets/css/base.css");
 </style>

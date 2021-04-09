@@ -56,7 +56,7 @@ export default {
 .detail-desc {
   padding: 1rem 1.2rem;
   line-height: 1.3;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .start,
 .end {

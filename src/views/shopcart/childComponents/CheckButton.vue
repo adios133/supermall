@@ -1,28 +1,26 @@
 <template>
-  <div class='check-button' :class="{active:isChecked}">
-    <img src="~assets/img/cart/tick.svg" alt="">
+  <div class="check-button" :class="{ active: isChecked }">
+    <img src="~assets/img/cart/tick.svg" alt="" />
   </div>
 </template>
 
 <script>
-  //import x from ''
-  export default {
-    name:'',
-    props: {
-      isChecked :{
-        type:Boolean,
-        default:true
-      }
-    }
-    
-  }
+export default {
+  name: "",
+  props: {
+    isChecked: {
+      type: Boolean,
+      default: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
 .check-button {
   width: 1.36rem;
   height: 1.36rem;
-  padding: .18rem;
+  padding: 0.18rem;
   border: 1px solid #aaa;
   border-radius: 50%;
   background-color: #fff;
@@ -31,5 +29,4 @@
   background-color: var(--color-tint);
   border: 1px solid transparent;
 }
-
 </style>

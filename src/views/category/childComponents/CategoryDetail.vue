@@ -1,37 +1,36 @@
 <template>
-  <div class='category-detail'>
-    <category-item v-for="(item,index) in cateList" 
-    :key="index" 
-    :item="item" 
-    class="cate-item clear-fix" />
+  <div class="category-detail">
+    <category-item
+      v-for="(item, index) in cateList"
+      :key="index"
+      :item="item"
+      class="cate-item clear-fix"
+    />
   </div>
 </template>
 
 <script>
-  import CategoryItem from "./CategoryItem"
+import CategoryItem from "./CategoryItem";
 
-  export default {
-    name:'',
-    components: {
-      CategoryItem
+export default {
+  name: "",
+  components: {
+    CategoryItem,
+  },
+  props: {
+    cateList: {
+      type: Array,
+      default() {
+        return [];
+      },
     },
-    props: {
-      cateList: {
-        type:Array,
-        default() {
-          return []
-        }
-      }
+  },
+  computed: {
+    cateLen() {
+      return this.cateList.length;
     },
-    computed: {
-      cateLen() {
-        return this.cateList.length
-      }
-    },
-    methods: {
-
-    },
-  }
+  },
+};
 </script>
 
 <style scoped>

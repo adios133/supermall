@@ -31,15 +31,11 @@ export const toTopFn = {
     topClick() {
       this.$refs.scroll.scrollTo(0, 0, 500)
     },
-    // 是否显示到顶图标，不能混入，
-    // showTop(position) {
-    //   this.isShowTop = -position.y > 700;
-    // }
   }
 }
 
 // 点击切换 pop new sell in home  category 
-import {TOP_DISTANCE,POP,NEW,SELL} from "common/const" 
+import { TOP_DISTANCE, POP, NEW, SELL } from "common/const"
 export const SwitchGoods = {
   data() {
     return {
@@ -48,7 +44,6 @@ export const SwitchGoods = {
   },
   methods: {
     goodsSwitch(index) {
-      // console.log(index);
       switch (index) {
         case 0:
           this.currentType = POP;
@@ -60,8 +55,8 @@ export const SwitchGoods = {
           this.currentType = SELL;
           break;
       }
-      this.$refs.tabControl2.currentIndex =index
-      this.$refs.tabControl1.currentIndex =index
+      this.$refs.tabControl2.currentIndex = index
+      this.$refs.tabControl1.currentIndex = index
     },
   },
 }
@@ -77,11 +72,8 @@ export const FixedTop = {
   methods: {
     homeScroll(position) {
       // 显示回到顶部功能mixin，这个是不能混入的，方法内部会直接覆盖
-      // console.log(position);
       this.isShowTop = -position.y > TOP_DISTANCE;
-
       // tabcontroller 吸顶,当轮播图加载完成触发事件
-      // console.log(-position.y);
       this.isFixed = -position.y > this.offsetTop;
     },
   },
@@ -100,18 +92,17 @@ export const GoodsCartData = {
 export const activeOrNot = {
   data() {
     return {
-      saveY:0,
+      saveY: 0,
     }
   },
   activated() {
     // 这个不会触发imgLoad，所以不能使用this.refreshDOM()
     this.$refs.scroll.refresh()
-    this.$refs.scroll.scrollTo(0,this.saveY,0)
+    this.$refs.scroll.scrollTo(0, this.saveY, 0)
   },
   deactivated() {
     // 保存滚动位置
     this.saveY = this.$refs.scroll.scroll.y
-
-    this.$bus.$off('imgLoad',this.refreshFn)
+    this.$bus.$off('imgLoad', this.refreshFn)
   }
 }
